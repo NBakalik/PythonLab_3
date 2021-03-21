@@ -2,7 +2,7 @@ from models.enums.country import Country
 
 
 class Drink:
-    def __init__(self, name: str, price: int, volume_in_ml: int, country: Country ):
+    def __init__(self, name: str, price: int, volume_in_ml: int, country: Country):
         self.name = name
         self.price = price
         self.volume_in_ml = volume_in_ml
