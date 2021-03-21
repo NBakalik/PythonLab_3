@@ -16,3 +16,6 @@
 3. cd PythonLab_3
 4. git checkout Lab3
 5. python main.py
+
+#To run tests:
+1. python -m unittest

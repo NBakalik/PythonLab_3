@@ -1,12 +1,8 @@
 from models.coffee import Coffee
 from models.cognac import Cognac
-from models.drink import Drink
-from models.recipe import Recipe
 from models.enums.coffee_type import CoffeeType
 from models.enums.country import Country
 from models.enums.sort_order import SortOrder
-from models.enums.ingredient import Ingredient
-from models.enums.cup_type import CupType
 from managers.coffee_mine_manager import CoffeeMineManager
 import unittest
 
@@ -62,33 +58,3 @@ class TestCoffeeMineManager(unittest.TestCase):
 
         # searching without arguments
         self.assertEqual(self.coffee_manager.search_by_coffee(), [self.espresso, self.americano, self.cappuccino])
-
-
-class TestDrink(unittest.TestCase):
-    def setUp(self):
-        self.water = Drink("water", 120, 250, Country.ITALY)
-
-    def test_init(self):
-        self.assertEqual(self.water.name, "water")
-        self.assertEqual(self.water.price, 120)
-        self.assertEqual(self.water.volume_in_ml, 250)
-        self.assertEqual(self.water.country, Country.ITALY)
-
-    def test_repr(self):
-        self.assertEqual(self.water.__repr__(), "name: water, price: 120, volume in ml: 250, country: Country.ITALY")
-
-
-class TestRecipe(unittest.TestCase):
-    def setUp(self):
-        self.recipe_of_mojito = Recipe("description", [Ingredient.MINT, Ingredient.LEMON, Ingredient.VODKA],
-                                       "Make something and done", CupType.MARGARITA, "mojito", 150, 300, Country.ITALY)
-
-    def test_init(self):
-        self.assertEqual(self.recipe_of_mojito.cocktail.__repr__(),
-                         "name: mojito, price: 150, volume in ml: 300, country: Country.ITALY")
-        self.assertEqual(self.recipe_of_mojito.description, "description")
-        self.assertEqual(self.recipe_of_mojito.get_ingredients(), [Ingredient.MINT, Ingredient.LEMON, Ingredient.VODKA])
-
-
-if __name__ == '__main__':
-    unittest.main()
